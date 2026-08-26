@@ -161,39 +161,44 @@ export function GammeShowcase() {
   return (
     <section
       ref={rootRef}
-      className="overflow-hidden border-y border-border bg-[#f6f6f6] text-black"
+      className="flex h-svh max-h-svh flex-col overflow-hidden border-y border-border bg-[#f6f6f6] text-black"
     >
-      <div className="mx-auto max-w-7xl px-5 py-16 md:px-8 md:py-24">
-        <Reveal>
-          <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-black/40">
+      <div className="mx-auto flex h-full w-full min-h-0 max-w-7xl flex-col px-5 py-5 md:px-8 md:py-6">
+        <Reveal className="shrink-0">
+          <p className="text-[10px] font-semibold uppercase tracking-[0.28em] text-black/40 md:text-[11px]">
             01 — Modèles
           </p>
-          <h2 className="mt-3 font-display text-3xl tracking-[0.12em] text-black md:text-4xl">
+          <h2 className="mt-1 font-display text-2xl tracking-[0.12em] text-black md:text-3xl">
             SUV JETOUR
           </h2>
         </Reveal>
 
         <div
-          className="relative mt-10 md:mt-14"
+          className="relative mt-3 flex min-h-0 flex-1 flex-col md:mt-4"
           onMouseEnter={() => setPaused(true)}
           onMouseLeave={() => setPaused(false)}
         >
-          <div className="grid items-center gap-10 lg:grid-cols-12 lg:gap-8">
+          <div className="grid min-h-0 flex-1 grid-rows-[auto_minmax(0,1fr)] gap-3 lg:grid-cols-12 lg:grid-rows-1 lg:items-stretch lg:gap-6">
             <div
               className={cn(
-                "lg:col-span-3",
+                "shrink-0 lg:col-span-3 lg:flex lg:h-full lg:flex-col lg:justify-center",
                 "transition-opacity duration-300",
                 busy ? "opacity-0" : "opacity-100",
               )}
             >
-              <h3 className="font-display text-5xl tracking-[0.08em] text-black md:text-6xl lg:text-[4.1rem] lg:leading-[0.9]">
+              <h3 className="font-display text-4xl tracking-[0.08em] text-black md:text-5xl lg:text-[3.5rem] lg:leading-[0.9]">
                 {model.name}
               </h3>
-              <p className="mt-5 max-w-xs text-lg font-light leading-relaxed text-black/60 md:text-xl">
+              <p className="mt-2 max-w-xs text-base font-light leading-snug text-black/60 md:mt-3 md:text-lg">
                 {model.tagline}
               </p>
-              <div className="mt-8 flex flex-col items-start gap-3">
-                <Button asChild variant="accent" className="w-[220px] justify-between">
+              <div className="mt-4 flex flex-row flex-wrap items-start gap-2 lg:mt-5 lg:flex-col lg:gap-2.5">
+                <Button
+                  asChild
+                  variant="accent"
+                  size="sm"
+                  className="w-auto justify-between lg:w-[200px]"
+                >
                   <Link href="/contact">
                     Réserver un essai
                     <ArrowRight />
@@ -202,18 +207,19 @@ export function GammeShowcase() {
                 <Button
                   asChild
                   variant="outline"
-                  className="w-[220px] border-black/25 hover:border-black"
+                  size="sm"
+                  className="w-auto border-black/25 hover:border-black lg:w-[200px]"
                 >
                   <Link href={`/modeles/${model.slug}`}>Voir le modèle</Link>
                 </Button>
               </div>
             </div>
 
-            <div className="relative lg:col-span-9">
+            <div className="relative flex min-h-0 flex-col lg:col-span-9 lg:h-full">
               <p
                 aria-hidden
                 className={cn(
-                  "pointer-events-none absolute inset-x-0 top-2 z-0 text-center font-display text-[clamp(2.2rem,7vw,5rem)] leading-none tracking-[0.06em] text-transparent uppercase [-webkit-text-stroke:1px_rgba(17,17,17,0.12)]",
+                  "pointer-events-none absolute inset-x-0 top-0 z-0 text-center font-display text-[clamp(1.6rem,5.5vw,4.2rem)] leading-none tracking-[0.06em] text-transparent uppercase [-webkit-text-stroke:1px_rgba(17,17,17,0.12)]",
                   "transition-opacity duration-300",
                   busy ? "opacity-0" : "opacity-100",
                 )}
@@ -221,11 +227,11 @@ export function GammeShowcase() {
                 {model.motif}
               </p>
 
-              <div className="relative z-10 mx-auto mt-8 w-full md:mt-12">
-                <div className="overflow-hidden">
+              <div className="relative z-10 mx-auto mt-6 flex min-h-0 w-full flex-1 items-center md:mt-8">
+                <div className="h-full min-h-0 w-full overflow-hidden">
                   <div
                     ref={trackRef}
-                    className="flex items-center"
+                    className="flex h-full items-center"
                     style={{
                       transform: `translate3d(-${slot * 100}%, 0, 0)`,
                       transition: instant
@@ -240,7 +246,7 @@ export function GammeShowcase() {
                         href={`/modeles/${item.slug}`}
                         aria-label={`Voir le ${item.name}`}
                         className={cn(
-                          "flex h-[200px] w-full min-w-full shrink-0 basis-full items-center justify-center md:h-[280px] lg:h-[320px]",
+                          "flex h-full min-h-[140px] w-full min-w-full shrink-0 basis-full items-center justify-center",
                           busy && "pointer-events-none",
                         )}
                       >
@@ -261,52 +267,52 @@ export function GammeShowcase() {
 
               <div
                 className={cn(
-                  "relative z-10 mt-8 grid grid-cols-3 divide-x divide-black/10 border-t border-black/10 pt-6 text-center",
+                  "relative z-10 mt-3 grid shrink-0 grid-cols-3 divide-x divide-black/10 border-t border-black/10 pt-3 text-center md:mt-4 md:pt-4",
                   "transition-opacity duration-300",
                   busy ? "opacity-0" : "opacity-100",
                 )}
               >
                 {model.homeStats.map((stat) => (
                   <div key={stat.label} className="px-2">
-                    <p className="text-[1.2rem] font-light leading-tight text-black md:text-[1.85rem]">
+                    <p className="text-lg font-light leading-tight text-black md:text-[1.55rem]">
                       {stat.value}
                       {stat.unit ? (
-                        <span className="ml-1 text-sm text-black/50 md:text-base">
+                        <span className="ml-1 text-xs text-black/50 md:text-sm">
                           {stat.unit}
                         </span>
                       ) : null}
                     </p>
-                    <p className="mt-2 text-[10px] font-medium tracking-[0.16em] text-black/40 uppercase md:text-xs">
+                    <p className="mt-1 text-[9px] font-medium tracking-[0.16em] text-black/40 uppercase md:text-[10px]">
                       {stat.label}
                     </p>
                   </div>
                 ))}
               </div>
+
+              <button
+                type="button"
+                onClick={() => move(active - 1, -1)}
+                disabled={busy}
+                className="absolute top-[42%] left-0 z-20 hidden size-10 -translate-y-1/2 items-center justify-center text-black/30 transition-colors hover:text-black disabled:opacity-30 lg:flex xl:-translate-x-6"
+                aria-label="Modèle précédent"
+              >
+                <ChevronLeft className="size-8" />
+              </button>
+              <button
+                type="button"
+                onClick={() => move(active + 1, 1)}
+                disabled={busy}
+                className="absolute top-[42%] right-0 z-20 hidden size-10 -translate-y-1/2 items-center justify-center text-black/30 transition-colors hover:text-black disabled:opacity-30 lg:flex xl:translate-x-6"
+                aria-label="Modèle suivant"
+              >
+                <ChevronRight className="size-8" />
+              </button>
             </div>
           </div>
-
-          <button
-            type="button"
-            onClick={() => move(active - 1, -1)}
-            disabled={busy}
-            className="absolute top-[38%] left-0 z-20 hidden size-11 items-center justify-center text-black/30 transition-colors hover:text-black disabled:opacity-30 lg:flex xl:-translate-x-8"
-            aria-label="Modèle précédent"
-          >
-            <ChevronLeft className="size-9" />
-          </button>
-          <button
-            type="button"
-            onClick={() => move(active + 1, 1)}
-            disabled={busy}
-            className="absolute top-[38%] right-0 z-20 hidden size-11 items-center justify-center text-black/30 transition-colors hover:text-black disabled:opacity-30 lg:flex xl:translate-x-8"
-            aria-label="Modèle suivant"
-          >
-            <ChevronRight className="size-9" />
-          </button>
         </div>
 
         <div
-          className="mt-16 flex flex-wrap items-end justify-center gap-x-6 gap-y-8 border-t border-black/10 pt-10 md:gap-x-10"
+          className="mt-3 flex shrink-0 flex-wrap items-end justify-center gap-x-4 gap-y-2 border-t border-black/10 pt-3 md:mt-4 md:gap-x-8 md:pt-4"
           role="tablist"
           aria-label="Choisir un modèle"
         >
@@ -321,12 +327,12 @@ export function GammeShowcase() {
                 disabled={busy}
                 onClick={() => move(index)}
                 className={cn(
-                  "w-[110px] text-center transition-all duration-300 md:w-[140px]",
+                  "w-[72px] text-center transition-all duration-300 sm:w-[96px] md:w-[120px]",
                   selected ? "opacity-100" : "opacity-40 hover:opacity-80",
                   busy && !selected ? "pointer-events-none" : "",
                 )}
               >
-                <span className="mx-auto flex h-14 w-full items-end justify-center md:h-16">
+                <span className="mx-auto flex h-9 w-full items-end justify-center md:h-12">
                   <Image
                     src={item.showcaseImage ?? item.image}
                     alt=""
@@ -337,7 +343,7 @@ export function GammeShowcase() {
                 </span>
                 <span
                   className={cn(
-                    "mt-3 block text-[11px] font-semibold tracking-[0.16em] uppercase",
+                    "mt-1.5 block text-[10px] font-semibold tracking-[0.16em] uppercase md:text-[11px]",
                     selected ? "text-accent" : "text-black/50",
                   )}
                 >

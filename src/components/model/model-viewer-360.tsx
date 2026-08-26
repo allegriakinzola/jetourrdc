@@ -30,7 +30,7 @@ function ColorDots({
   return (
     <div
       className={cn(
-        "flex flex-wrap items-center gap-3.5 rounded-full px-4 py-2.5 backdrop-blur-md",
+        "flex flex-wrap items-center justify-center gap-3.5 rounded-full px-4 py-2.5 backdrop-blur-md",
         tone === "dark" ? "bg-black/35" : "bg-white/75",
       )}
     >
@@ -147,7 +147,7 @@ function ExteriorSpin({
         src={spinFrame(frame)}
         alt={`JETOUR ${modelName}, vue ${frame} sur ${frameCount}`}
         draggable={false}
-        className="relative z-[1] h-[min(72%,780px)] w-auto max-w-[92%] object-contain select-none"
+        className="relative z-[1] h-full w-auto max-w-[92%] object-contain select-none"
       />
     </div>
   );
@@ -166,7 +166,7 @@ function ExteriorStill({
       <img
         src={src}
         alt={`JETOUR ${modelName}`}
-        className="h-[min(72%,780px)] w-auto max-w-[92%] object-contain select-none"
+        className="h-full w-auto max-w-[92%] object-contain select-none"
       />
     </div>
   );
@@ -403,39 +403,90 @@ export function ModelViewer360({
     ] as const
   );
 
+  const colorBlock = (
+    <div className="flex flex-col items-center gap-3 text-center">
+      <p
+        className={cn(
+          "text-sm font-medium tracking-[0.04em]",
+          overlayDark ? "text-white" : "text-black",
+        )}
+      >
+        JETOUR {name}
+        <span
+          className={cn("mx-2", overlayDark ? "text-white/35" : "text-black/30")}
+        >
+          ·
+        </span>
+        <span
+          className={cn(
+            "font-normal",
+            overlayDark ? "text-white/75" : "text-black/70",
+          )}
+        >
+          {activeLabel}
+        </span>
+      </p>
+      {view === "exterior" ? (
+        <ColorDots
+          items={viewer.spinColors}
+          activeId={extColor}
+          onSelect={setExtColor}
+          tone="light"
+        />
+      ) : hasInterior ? (
+        <ColorDots
+          items={interiors}
+          activeId={intColor}
+          onSelect={setIntColor}
+          tone={overlayDark ? "dark" : "light"}
+        />
+      ) : null}
+    </div>
+  );
+
+  const stage =
+    view === "exterior" && isSpin && spinFolder && frameCount ? (
+      <ExteriorSpin
+        colorId={extColor}
+        frameCount={frameCount}
+        spinFolder={spinFolder}
+        spinExt={viewer.spinExt ?? "png"}
+        modelName={name}
+      />
+    ) : view === "exterior" ? (
+      <ExteriorStill src={ext.image ?? ""} modelName={name} />
+    ) : isPano && interior ? (
+      <InteriorPano src={interior.image} />
+    ) : interior ? (
+      <InteriorStill
+        src={interior.image}
+        alt={`${name} — ${interior.name}`}
+        light
+      />
+    ) : null;
+
   return (
     <section
       className={cn(
-        "relative h-svh w-full overflow-hidden",
+        "relative flex h-svh w-full flex-col overflow-hidden",
         view === "interior" && isPano ? "bg-[#111]" : "bg-[#ececec]",
       )}
     >
-      <div className="absolute inset-0">
-        {view === "exterior" && isSpin && spinFolder && frameCount ? (
-          <ExteriorSpin
-            colorId={extColor}
-            frameCount={frameCount}
-            spinFolder={spinFolder}
-            spinExt={viewer.spinExt ?? "png"}
-            modelName={name}
-          />
-        ) : view === "exterior" ? (
-          <ExteriorStill src={ext.image ?? ""} modelName={name} />
-        ) : isPano && interior ? (
-          <InteriorPano src={interior.image} />
-        ) : interior ? (
-          <InteriorStill
-            src={interior.image}
-            alt={`${name} — ${interior.name}`}
-            light
-          />
-        ) : null}
-      </div>
+      {overlayDark ? (
+        <div className="absolute inset-0">{stage}</div>
+      ) : (
+        <div className="flex min-h-0 flex-1 flex-col items-center justify-center px-5 pt-[4.75rem] pb-4">
+          <div className="relative h-[min(58svh,620px)] w-full max-w-6xl">
+            {stage}
+          </div>
+          <div className="relative z-20 mt-3 shrink-0 md:mt-4">{colorBlock}</div>
+        </div>
+      )}
 
       {tabs.length > 1 ? (
         <div className="pointer-events-none absolute inset-x-0 top-[5.25rem] z-20 px-5 md:px-10">
           <div
-            className="pointer-events-auto flex justify-center gap-8 md:justify-end"
+            className="pointer-events-auto flex justify-center gap-8"
             role="tablist"
             aria-label="Vue du véhicule"
           >
@@ -464,46 +515,11 @@ export function ModelViewer360({
         </div>
       ) : null}
 
-      <div className="pointer-events-none absolute inset-x-0 bottom-6 z-20 flex flex-col items-center gap-4 px-5 md:bottom-8 md:items-start md:px-10">
-        <p
-          className={cn(
-            "text-sm font-medium tracking-[0.04em]",
-            overlayDark ? "text-white" : "text-black",
-          )}
-        >
-          JETOUR {name}
-          <span
-            className={cn("mx-2", overlayDark ? "text-white/35" : "text-black/30")}
-          >
-            ·
-          </span>
-          <span
-            className={cn(
-              "font-normal",
-              overlayDark ? "text-white/75" : "text-black/70",
-            )}
-          >
-            {activeLabel}
-          </span>
-        </p>
-        <div className="pointer-events-auto">
-          {view === "exterior" ? (
-            <ColorDots
-              items={viewer.spinColors}
-              activeId={extColor}
-              onSelect={setExtColor}
-              tone="light"
-            />
-          ) : hasInterior ? (
-            <ColorDots
-              items={interiors}
-              activeId={intColor}
-              onSelect={setIntColor}
-              tone={overlayDark ? "dark" : "light"}
-            />
-          ) : null}
+      {overlayDark ? (
+        <div className="pointer-events-auto absolute inset-x-0 bottom-8 z-20 flex justify-center px-5">
+          {colorBlock}
         </div>
-      </div>
+      ) : null}
     </section>
   );
 }
