@@ -1,0 +1,223 @@
+import type { ModelDetail } from "@/lib/model-detail";
+
+export const g700Page: ModelDetail = {
+  slug: "g700",
+  name: "G700",
+  series: "Série G · Travel+",
+  tagline: "Au-delà de l’horizon.",
+  summary:
+    "SUV hybride rechargeable premium : 2.0 TD, double moteur électrique, 4WD et un habitacle 5 ou 6 places pensé pour la piste comme pour la ville.",
+  description:
+    "JETOUR G700 en RDC : PHEV 2.0 TD, 904 ch, 1 135 N·m, batterie 34,13 kWh. Fiche technique, teintes et galerie.",
+  pitch:
+    "Le G700 n’est pas un SUV de plus : c’est le flagship tout-terrain hybride de JETOUR. Force, luxe et technologie, pour Kinshasa comme pour les pistes du Katanga. Un compagnon de haute performance, exclusivement chez AMT Motors.",
+  chapters: [
+    {
+      kicker: "Design",
+      title: "Esthétique tout-terrain GAIA",
+      text: "Posture dominante, carrosserie haute résistance, signature lumineuse : le G700 s’impose avant même de rouler. Lignes droites, protections d’ailes, roue de secours apparente — la silhouette G-Series, pensée pour aller plus loin.",
+      image: "/models/g700/gallery/posture.jpg",
+    },
+    {
+      kicker: "Performance",
+      title: "4,6 s. 904 ch. Quatre roues.",
+      text: "Chaîne PHEV 2.0 TD, tank turn, crawl, gué 900 mm. Suspension pneumatique et amortissement magnétique : le châssis lit le terrain, de Boulevard du 30 Juin aux pistes du Katanga. Accélération nette, endurance de l’hybride.",
+      image: "/models/g700/gallery/11.jpg",
+    },
+    {
+      kicker: "Technologie",
+      title: "Cockpit multi-écrans, conduite L2",
+      text: "Combiné 35,4\", écran 15,6\" Snapdragon, pavillon 17,3\". ADAS niveau 2, caméras 360° et châssis transparent. La technologie n’est pas un gadget : elle sert la piste et la ville.",
+      image: "/models/g700/gallery/ecran.jpg",
+    },
+    {
+      kicker: "Confort",
+      title: "Cabine 6 places, standing concert",
+      text: "Sièges massants, table, repose-pieds. Audio Lexicon 18 haut-parleurs — le partenaire Rolls-Royce. Clim tri-zone, toit panoramique. Le voyage long, sans compromis.",
+      image: "/models/g700/gallery/audio.jpg",
+    },
+  ],
+  hero: {
+    video: "/models/g700.mp4",
+    poster: "/models/g700/gallery/posture.jpg",
+  },
+  heroStats: [
+    { value: "2.0", unit: "TD PHEV", label: "Chaîne hybride" },
+    { value: "904", unit: "ch", label: "Puissance combinée" },
+    { value: "1 135", unit: "N·m", label: "Couple" },
+    { value: "4,6", unit: "s", label: "0–100 km/h" },
+  ],
+  viewer: {
+    frameCount: 36,
+    spinFolder: "/models/g700/spin",
+    spinColors: [
+      { id: "blue", name: "Bleu", hex: "#4d7094" },
+      { id: "black", name: "Noir", hex: "#1f2329" },
+      { id: "brown", name: "Marron", hex: "#746a53" },
+      { id: "white", name: "Blanc", hex: "#efefef" },
+    ],
+    panos: [
+      {
+        id: "orange-black",
+        name: "Orange & noir",
+        hex: "#D4510B",
+        gradient: "linear-gradient(270deg, #D4510B 50%, #101112 50%)",
+        image: "/models/g700/pano/orange.jpg",
+      },
+      {
+        id: "beige-black",
+        name: "Beige & noir",
+        hex: "#E2CEBB",
+        gradient: "linear-gradient(270deg, #E2CEBB 50%, #101112 50%)",
+        image: "/models/g700/pano/beige.jpg",
+      },
+      {
+        id: "red-black",
+        name: "Rouge & noir",
+        hex: "#DE0000",
+        gradient: "linear-gradient(270deg, #DE0000 50%, #000000 50%)",
+        image: "/models/g700/pano/red.jpg",
+      },
+    ],
+  },
+  gallery: [
+    {
+      src: "/models/g700/gallery/posture.jpg",
+      title: "Au-delà de l’horizon",
+      text: "Le G700 dans le désert : silhouette body-on-frame, protections et signature lumineuse du flagship Travel+.",
+    },
+    {
+      src: "/models/g700/gallery/ville.jpg",
+      title: "Traction 4WD",
+      text: "Nuage de sable, couple immédiat : le PHEV 904 ch envoie la puissance sur les quatre roues.",
+    },
+    {
+      src: "/models/g700/gallery/11.jpg",
+      title: "Piste et dunes",
+      text: "Tank turn, crawl et châssis transparent pour lire le terrain, jusqu’à 900 mm de gué.",
+    },
+    {
+      src: "/models/g700/gallery/aventure.jpg",
+      title: "Profil tout-terrain",
+      text: "Ligne droite, toit flottant, roue de secours apparente : la posture G-Series.",
+    },
+    {
+      src: "/models/g700/gallery/detail.jpg",
+      title: "Descente de dune",
+      text: "Garde au sol 230 mm, angles 35° / 28°, suspension air + magnétique.",
+    },
+    {
+      src: "/models/g700/gallery/nuit.jpg",
+      title: "Teinte argent",
+      text: "Calandre JETOUR, optiques LED matrix et protections d’ailes du G700.",
+    },
+    {
+      src: "/models/g700/gallery/chassis.jpg",
+      title: "Structure renforcée",
+      text: "Cage, longerons et ouvertures de portes : la base du SUV premium tout-terrain.",
+    },
+    {
+      src: "/models/g700/gallery/toit.jpg",
+      title: "Écran pavillon 17,3\"",
+      text: "Divertissement à l’arrière, toiture panoramique et lumière d’ambiance.",
+    },
+    {
+      src: "/models/g700/gallery/ecran.jpg",
+      title: "Console arrière",
+      text: "Écran passagers, clim tri-zone et commandes depuis la deuxième rangée.",
+    },
+    {
+      src: "/models/g700/gallery/audio.jpg",
+      title: "Lexicon 18 haut-parleurs",
+      text: "Chaîne Lexicon by Harman et réduction active du bruit pour un habitacle concert.",
+    },
+  ],
+  specGroups: [
+    {
+      title: "Carrosserie",
+      items: [
+        { label: "Catégorie", value: "SUV premium tout-terrain" },
+        { label: "Structure", value: "Châssis séparé (body-on-frame)" },
+        { label: "Places", value: "5 (2+3) ou 6 (2+2+2)" },
+        { label: "Longueur", value: "5 198 mm" },
+        { label: "Largeur", value: "2 050 mm" },
+        { label: "Hauteur", value: "1 956 mm" },
+        { label: "Empattement", value: "2 870 mm" },
+        { label: "Garde au sol", value: "230 mm (jusqu’à 320 mm air)" },
+        { label: "Angle d’attaque / fuite", value: "35° / 28°" },
+        { label: "Angle de rampe", value: "21°" },
+        { label: "Gué", value: "900 mm" },
+        { label: "Coffre", value: "509–2 104 L" },
+        { label: "Réservoir", value: "100 L" },
+        { label: "Masse à vide", value: "3 176–3 211 kg" },
+        { label: "Pneus", value: "275/60 R20" },
+      ],
+    },
+    {
+      title: "Chaîne PHEV",
+      items: [
+        { label: "Architecture", value: "Hybride rechargeable 4WD" },
+        { label: "Moteur thermique", value: "2.0 TD · 1 997 cm³ · 211 ch" },
+        { label: "Moteurs électriques", value: "Avant 286 ch · arrière 408 ch" },
+        { label: "Puissance combinée", value: "904 ch" },
+        { label: "Couple combiné", value: "1 135 N·m" },
+        { label: "Transmission", value: "2 DHT · 4WD" },
+        { label: "Batterie", value: "34,13 kWh LFP CATL" },
+        { label: "Autonomie électrique", value: "80 à 150 km" },
+        { label: "Autonomie mixte", value: "Jusqu’à 1 000–1 400 km" },
+        { label: "0–100 km/h", value: "4,6 s" },
+        { label: "Vitesse max.", value: "180 km/h" },
+        { label: "Recharge DC", value: "Plateforme 800 V · ~10 min" },
+        { label: "Recharge AC", value: "Environ 5 h" },
+        { label: "V2L", value: "6,6 kW" },
+      ],
+    },
+    {
+      title: "Châssis",
+      items: [
+        { label: "Avant / arrière", value: "Double triangulation indépendante" },
+        { label: "Suspension", value: "Air + amortissement magnétique" },
+        { label: "Freins", value: "Disques ventilés + EPB" },
+        { label: "Direction", value: "Assistée électrique" },
+        { label: "Modes", value: "Tank turn, crawl, 4WD low" },
+        { label: "Remorquage", value: "2 500 kg" },
+      ],
+    },
+    {
+      title: "Technologie & confort",
+      items: [
+        { label: "Combiné", value: "Dalle 35,4\"" },
+        { label: "Écran central", value: "15,6\" · Snapdragon 8255" },
+        { label: "Arrière", value: "Écran pavillon 17,3\"" },
+        { label: "Audio", value: "Lexicon · 18 haut-parleurs" },
+        { label: "Climatisation", value: "Tri-zone" },
+        { label: "Sièges", value: "Ventilés, massants, électriques" },
+        { label: "Toit", value: "Panoramique" },
+        { label: "Connectivité", value: "CarPlay / Android Auto" },
+      ],
+    },
+    {
+      title: "Sécurité",
+      items: [
+        { label: "ADAS", value: "Niveau 2 · ACC, LKA, AEB" },
+        { label: "Caméras", value: "360° + châssis transparent" },
+        { label: "Airbags", value: "Jusqu’à 12" },
+        { label: "Radars", value: "12 ultrasons · 3 millimétriques" },
+      ],
+    },
+  ],
+  features: [
+    "Hybride rechargeable 2.0 TD + double moteur",
+    "904 ch et 1 135 N·m combinés",
+    "Batterie LFP CATL 34,13 kWh",
+    "4WD, tank turn et crawl",
+    "Suspension pneumatique + magnétique",
+    "Gué 900 mm, garde au sol 230 mm",
+    "Combiné 35,4\" et écran 15,6\"",
+    "Audio Lexicon 18 haut-parleurs",
+    "ADAS niveau 2 et caméras 360°",
+    "Habitacle 5 ou 6 places",
+    "Recharge 800 V et V2L 6,6 kW",
+    "Toit panoramique et écran pavillon 17,3\"",
+  ],
+};

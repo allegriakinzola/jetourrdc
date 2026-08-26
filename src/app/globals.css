@@ -1,0 +1,217 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+:root {
+  --background: #ffffff;
+  --foreground: #111111;
+  --card: #f6f6f6;
+  --card-foreground: #111111;
+  --popover: #ffffff;
+  --popover-foreground: #111111;
+  --primary: #111111;
+  --primary-foreground: #ffffff;
+  --secondary: #f4f4f4;
+  --secondary-foreground: #111111;
+  --muted: #f4f4f4;
+  --muted-foreground: #6b6b6b;
+  --accent: #e31c23;
+  --accent-foreground: #ffffff;
+  --destructive: #e31c23;
+  --border: rgba(17, 17, 17, 0.12);
+  --input: rgba(17, 17, 17, 0.18);
+  --ring: #e31c23;
+  --radius: 0px;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --font-sans: var(--font-manrope);
+  --font-display: var(--font-oswald);
+  --radius-sm: 0px;
+  --radius-md: 0px;
+  --radius-lg: 0px;
+  --radius-xl: 0px;
+}
+
+@layer base {
+  * {
+    border-color: var(--border);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-manrope), system-ui, sans-serif;
+  }
+}
+
+@keyframes jetour-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes jetour-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes jetour-hint-down {
+  0%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.65;
+  }
+  50% {
+    transform: translateY(7px);
+    opacity: 1;
+  }
+}
+
+.page-enter {
+  animation: jetour-fade-in 0.5s ease both;
+}
+
+.hero-enter {
+  animation: jetour-fade-up 0.95s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.hero-d1 {
+  animation-delay: 80ms;
+}
+.hero-d2 {
+  animation-delay: 180ms;
+}
+.hero-d3 {
+  animation-delay: 300ms;
+}
+.hero-d4 {
+  animation-delay: 440ms;
+}
+.hero-d5 {
+  animation-delay: 580ms;
+}
+
+.scroll-hint {
+  animation: jetour-hint-down 2.2s ease-in-out infinite;
+}
+
+.reveal {
+  --reveal-delay: 0ms;
+  transition:
+    opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1) var(--reveal-delay),
+    transform 0.9s cubic-bezier(0.22, 1, 0.36, 1) var(--reveal-delay);
+}
+
+.reveal[data-reveal="up"] {
+  opacity: 0;
+  transform: translateY(28px);
+}
+
+.reveal[data-reveal="left"] {
+  opacity: 0;
+  transform: translateX(-36px);
+}
+
+.reveal[data-reveal="right"] {
+  opacity: 0;
+  transform: translateX(36px);
+}
+
+.reveal[data-reveal="in"] {
+  opacity: 0;
+}
+
+.reveal[data-reveal="image"] {
+  overflow: hidden;
+}
+
+.reveal[data-reveal="image"] img {
+  transform: scale(1.08);
+  transition: transform 1.25s cubic-bezier(0.22, 1, 0.36, 1) var(--reveal-delay);
+}
+
+.reveal[data-in] {
+  opacity: 1;
+  transform: none;
+}
+
+.reveal[data-reveal="image"][data-in] img {
+  transform: scale(1);
+}
+
+.nav-link {
+  position: relative;
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  inset-inline: 0;
+  bottom: -6px;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.nav-link:hover::after,
+.nav-link[data-active]::after {
+  transform: scaleX(1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .page-enter,
+  .hero-enter,
+  .scroll-hint {
+    animation: none !important;
+  }
+
+  .reveal,
+  .reveal img {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
+
+@utility font-display {
+  font-family: var(--font-oswald), var(--font-manrope), sans-serif;
+  font-weight: 500;
+  text-transform: uppercase;
+}
